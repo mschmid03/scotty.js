@@ -87,3 +87,5 @@ function addSliderHandler(boxId: string, sliderId: string) {
     });
   }
 }
+
+window.addSliderHandler = addSliderHandler;
