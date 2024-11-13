@@ -29,7 +29,10 @@ function addSliderHandler(boxId: string, sliderId: string) {
     ]);
 
     function moveCircle(e) {
-      if (!e.originalEvent.sourceCapabilities.firesTouchEvents) {
+      if (
+        !("sourceCapabilities" in e.originalEvent) ||
+        !e.originalEvent.sourceCapabilities.firesTouchEvents
+      ) {
         const rect = $(this).offset();
         const left = e.pageX - rect.left;
         const top = e.pageY - rect.top;
@@ -70,7 +73,10 @@ function addSliderHandler(boxId: string, sliderId: string) {
     $rect.on("mousemove", moveCircle);
     $rect.on("click", clickHandler);
     $rect.on("mouseover", (e) => {
-      if (!e.originalEvent.sourceCapabilities.firesTouchEvents) {
+      if (
+        !("sourceCapabilities" in e.originalEvent) ||
+        !e.originalEvent.sourceCapabilities.firesTouchEvents
+      ) {
         $follower.css("display", "block");
         $follower.css({
           top: $rect.height() / 2 - offsetY,
