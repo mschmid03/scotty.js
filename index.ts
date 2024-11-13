@@ -21,10 +21,11 @@ function addSliderHandler(boxId: string, sliderId: string) {
       "slider",
       (sliderInstances) => {
         // The callback passes a sliderInstances array with all the sliderInstance instances on the page.
-        const [sliderInstance] = sliderInstances;
-        if (sliderInstance.wrapperEl.classList[0] === `${sliderId}_list`) {
-          slider = sliderInstance;
-        }
+        sliderInstances.forEach((sliderInstance) => {
+          if (sliderInstance.wrapperEl.classList[0] === `${sliderId}_list`) {
+            slider = sliderInstance;
+          }
+        });
       },
     ]);
 
